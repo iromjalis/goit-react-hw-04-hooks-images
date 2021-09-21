@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unused-state */
 import "./App.css";
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
 
 import imagesApi from "./services/images-api";
@@ -16,6 +16,90 @@ import Loader from "components/Loader/Loader";
 
 //* const API = '21072245-3acfda09a1d5bc65070e6b336';
 //! https://pixabay.com/api/?key=21072245-3acfda09a1d5bc65070e6b336&q=yellow+flowers&image_type=photo
+
+// function App() {
+//   const [images, setImages] = useState([]);
+//   const [searchQuery, setSearchQuery] = useState("");
+//   const [largeImageURL, setLargeImageURL] = useState("");
+//   const [filter, setFilter] = useState("");
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [error, setError] = useState(null);
+//   const [showModal, setShowModal] = useState(false);
+//   const [currentPage, setCurrentPage] = useState(1);
+//   useEffect(() => {
+//     if (searchQuery) {
+//       fetchImages();
+//     }
+//   }, []);
+
+//   useEffect(
+//     (error) => {
+//       setError(error);
+//     },
+//     [error]
+//   );
+
+//   const onChangeQuery = (query) => {
+//     setSearchQuery(query);
+//     setCurrentPage(1);
+//     setImages([]);
+//   };
+//   const fetchImages = () => {
+//     setIsLoading(true);
+
+//     const options = {
+//       searchQuery,
+//       currentPage,
+//     };
+
+//     imagesApi
+//       .fetchImages(options)
+//       .then((data) => {
+//         setImages([...images, ...data]);
+//         setCurrentPage((prevPage) => prevPage + 1);
+//         setError("");
+//       })
+//       .catch((error) => console.log(error))
+//       .finally(() => {
+//         setIsLoading(false);
+//         window.scrollTo(
+//           {
+//             top: document.querySelector("#imagesList").scrollHeight,
+//             behavior: "smooth",
+//           },
+//           800
+//         );
+//       });
+//   };
+//   const toggleModal = () => setShowModal(!showModal);
+
+//   const handleLargeURLImage = (data) => {
+//     setLargeImageURL(data);
+//     setShowModal(true);
+//   };
+
+//   return (
+//     <div className="App">
+//       <Container>
+//         {showModal && (
+//           <Modal onClose={toggleModal} largeImageURL={largeImageURL} />
+//         )}
+//         <Searchbar onSubmit={onChangeQuery} searchQuery={searchQuery} />
+//         {images.length > 0 && (
+//           <ImageGallery
+//             images={images}
+//             handleLargeURLImage={handleLargeURLImage}
+//           />
+//         )}
+//         {isLoading ? (
+//           <Loader error={error} />
+//         ) : (
+//           images.length > 0 && <Button onClick={fetchImages} />
+//         )}
+//       </Container>
+//     </div>
+//   );
+// }
 
 class App extends Component {
   state = {
@@ -82,7 +166,7 @@ class App extends Component {
   };
 
   render() {
-    const { images, showModal, largeImageURL, isLoading } = this.state;
+    const { images, showModal, largeImageURL, isLoading, error } = this.state;
     return (
       <div className="App">
         <Container>
@@ -100,7 +184,7 @@ class App extends Component {
             />
           )}
           {isLoading ? (
-            <Loader />
+            <Loader error={error} />
           ) : (
             images.length > 0 && <Button onClick={this.fetchImages} />
           )}
