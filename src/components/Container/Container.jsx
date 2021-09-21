@@ -1,6 +1,4 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
-// import { Test } from './Container.styles';
+import React from "react";
 
 const Container = ({ children }) => <div>{children}</div>;
 
