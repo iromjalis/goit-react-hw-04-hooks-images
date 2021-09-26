@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
 const Button = ({ onClick }) => {
   return (
@@ -9,11 +10,7 @@ const Button = ({ onClick }) => {
 };
 
 Button.propTypes = {
-  // bla: PropTypes.string,
-};
-
-Button.defaultProps = {
-  // bla: 'test',
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Button;

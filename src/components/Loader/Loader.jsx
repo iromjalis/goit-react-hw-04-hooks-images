@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import ThreeDots from "react-loader-spinner";
 
 const Loader = () => {
@@ -9,14 +9,6 @@ const Loader = () => {
       <ThreeDots type="ThreeDots" color="#00BFFF" height={80} width={80} />
     </div>
   );
-};
-
-Loader.propTypes = {
-  // bla: PropTypes.string,
-};
-
-Loader.defaultProps = {
-  // bla: 'test',
 };
 
 export default Loader;

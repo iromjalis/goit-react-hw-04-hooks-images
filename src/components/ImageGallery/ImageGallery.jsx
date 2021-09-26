@@ -1,6 +1,7 @@
 import React from "react";
 //components
 import ImageGalleryItem from "./ImageGalleryItem";
+import PropTypes from "prop-types";
 
 const ImageGallery = ({ images, handleLargeURLImage }) => {
   const handleClick = (e) => {
@@ -26,10 +27,7 @@ const ImageGallery = ({ images, handleLargeURLImage }) => {
 };
 
 ImageGallery.propTypes = {
-  // bla: PropTypes.string,
+  images: PropTypes.array.isRequired,
 };
 
-ImageGallery.defaultProps = {
-  // bla: 'test',
-};
 export default ImageGallery;

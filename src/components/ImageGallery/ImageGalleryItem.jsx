@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const ImageGalleryItem = ({
   id,
@@ -28,11 +29,19 @@ const ImageGalleryItem = ({
 };
 
 ImageGalleryItem.propTypes = {
-  // bla: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  webformatURL: PropTypes.string,
+  largeImageURL: PropTypes.string,
+  tags: PropTypes.string,
+  handleLargeURLImage: PropTypes.string,
 };
 
 ImageGalleryItem.defaultProps = {
-  // bla: 'test',
+  id: "",
+  webformatURL: "",
+  largeImageURL: "",
+  tags: "",
+  handleLargeURLImage: "",
 };
 
 export default ImageGalleryItem;
