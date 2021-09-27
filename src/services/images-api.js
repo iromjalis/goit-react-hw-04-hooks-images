@@ -13,7 +13,7 @@ const fetchImages = async ({ currentPage, searchQuery }) => {
   return await axios
     .get("", {
       params: {
-        currentPage,
+        page: currentPage,
         q: searchQuery,
       },
     })
